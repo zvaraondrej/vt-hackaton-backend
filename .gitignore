@@ -1,0 +1,15 @@
+# Logs
+logs
+*.log
+
+# istanbul
+coverage
+
+# build
+build
+
+# dependency directory
+node_modules
+
+# npm log
+npm-debug.log
