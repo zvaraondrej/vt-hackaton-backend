@@ -9,6 +9,7 @@ import path from 'path';
 import express from 'express';  
 import favicon from 'serve-favicon';
 import morgan from 'morgan';
+import errorhandler from 'errorhandler';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import config from './config';
@@ -46,6 +47,9 @@ if(env === 'development') {
     }));
 
     app.use(require('webpack-hot-middleware')(compiler));  
+
+    // use dev error handler
+    app.use(errorhandler())
 
 }
 
@@ -92,6 +96,15 @@ app.set('view engine', 'jade');
 app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
 app.use(express.static(path.join(config.root, 'client')));
 
+
+// default error handler
+app.use(function(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  return res.status(err.status || HTTP_SERVER_ERROR).render('500');
+});
 
 //registering the routes
 routes(app);

@@ -6,12 +6,19 @@
 
 'use strict';
 
-import T9Service from './T9Service.service';
+import _ from 'lodash';
+import T9Service from './../../services/T9Service.service';
+import ErrorHandlerService from './../../services/ErrorHandler.service';
+import EntityHandlerService from './../../services/EntityHandler.service';
+import ERROR from './../../enums/Error.enum';
 
 export default class WordsController {
 
   constructor() {
     this.t9Service = new T9Service();
+    this.errorHandler = new ErrorHandlerService();
+    this.entityHandler = new EntityHandlerService();
+    this.ERROR = ERROR;
   }
 
   /**
@@ -19,54 +26,24 @@ export default class WordsController {
   */
   getWords(req, res) {
 
-    var val = req.query && req.query.value ? _.toNumber(req.query.value) : null;
+    var value = req.query && req.query.value ? _.toNumber(req.query.value) : null;
 
     // we are accepting only finite numbers
-    if(!val && !_.isFinite(val)) {
-      return res.status(500).send('Invalid value parameter.');
+    if(!value && !_.isFinite(value)) {
+      return Promise.reject(new Error(this.ERROR.MSG.INVALID_ARGUMENT))
+        .catch(this.errorHandler.handleError(res));
     }
+
     
     try {
-      return this.t9Service.getWordsFromNumber(_.toNumber)
-		    .then(this.handleEntityNotFound(res))
-        .then(this.respondWithResult(res))
-        .catch(this.handleError(res));
+      return this.t9Service.getWordsFromNumber(value)
+		    .then(this.errorHandler.respondEntityNotFound(res))
+        .then(this.entityHandler.respondWithEntity(res))
+        .catch(this.errorHandler.handleError(res));
     } catch(e) {
-      console.log(e);
-      return res.status(500).send('Internal server error.');
+      return Promise.reject(new Error(this.ERROR.MSG.INTERNAL_ERROR))
+        .catch(this.errorHandler.handleError(res));
     }
   }
-
-
-  respondWithResult(res, statusCode) {
-    statusCode = statusCode || 200;
-    return function(entity) {
-      if(entity) {
-        return res.status(statusCode).json(entity);
-      }
-      return null;
-    };
-  }
-
-
-  handleEntityNotFound(res) {
-    return function(entity) {
-      if(!entity) {
-        res.status(404).end();
-        return null;
-      }
-      return entity;
-    };
-  }
-
-
-  handleError(res, statusCode) {
-    statusCode = statusCode || 500;
-    return function(err) {
-      console.log(err)
-      return res.status(statusCode).send(err);
-    };
-  }
-
 
 }
