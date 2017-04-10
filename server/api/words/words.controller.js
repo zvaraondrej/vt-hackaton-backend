@@ -6,29 +6,29 @@
 
 'use strict';
 
-import _ from 'lodash';
-// import * as Products from './products.service';
+import T9Service from './T9Service.service';
 
-
-export default class NumWordsController {
+export default class WordsController {
 
   constructor() {
-    this.products = {
-      getResult: function getResult(){
-        return Promise.resolve('foo');
-      }
-    }
+    this.t9Service = new T9Service();
   }
 
-
   /**
-  * GET /api/core/:id          ->  product detail
+  * GET /api/words -> words list
   */
-  getResult(req, res) {
+  getWords(req, res) {
 
+    var val = req.query && req.query.value ? _.toNumber(req.query.value) : null;
+
+    // we are accepting only finite numbers
+    if(!val && !_.isFinite(val)) {
+      return res.status(500).send('Invalid value parameter.');
+    }
+    
     try {
-      return this.products.getResult()
-		.then(this.handleEntityNotFound(res))
+      return this.t9Service.getWordsFromNumber(_.toNumber)
+		    .then(this.handleEntityNotFound(res))
         .then(this.respondWithResult(res))
         .catch(this.handleError(res));
     } catch(e) {

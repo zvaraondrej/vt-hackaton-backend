@@ -7,12 +7,11 @@
 import path from 'path';
 import config from './config';
 import pageNotFound from './components/errors';
-import core from './api/core';
-
+import words from './api/words';
 
 export default function(app) {
 
-    app.use('/api/core', core);
+    app.use('/api/words', words);
 
     // All undefined asset or api routes should return a 404
     app.route('/:url(api)/*')
