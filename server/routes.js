@@ -1,0 +1,26 @@
+/**
+ * Main application routes
+ */
+
+'use strict';
+
+import path from 'path';
+import config from './config';
+import pageNotFound from './components/errors';
+import core from './api/core';
+
+
+export default function(app) {
+
+    app.use('/api/core', core);
+
+    // All undefined asset or api routes should return a 404
+    app.route('/:url(api)/*')
+        .get(pageNotFound);
+
+    // All other routes should redirect to the index.html
+    app.route('/*')
+        .get((req, res) => {
+            res.sendFile(path.resolve(`${config.root}/index.html`));
+        });
+}
