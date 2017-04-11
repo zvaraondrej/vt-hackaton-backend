@@ -43,7 +43,7 @@ if(env === 'development') {
             timings: true,
             chunks: false
         },
-        publicPath: webpackConf.output.publicPath
+        // publicPath: webpackConf.output.publicPath
     }));
 
     app.use(require('webpack-hot-middleware')(compiler));  
@@ -59,9 +59,16 @@ if(env === 'development' || env === 'test') {
     
     // dev logging to the console
     app.use(morgan('dev'));
+
+    console.log(path.join(config.root, '.tmp'));
+    // index.html path
+    app.use(express.static(path.join(config.root, '.tmp')));
 }
 
 if(env === 'production') {
+
+    // favicon dest
+    app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
 
     // production logging to the log files
     const logDir = config.logDir;
@@ -91,20 +98,6 @@ app.use(cookieParser());
 app.set('views', `${config.root}/server/views`);
 app.set('view engine', 'jade');
 
-
-// static & favicon
-app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
-app.use(express.static(path.join(config.root, 'client')));
-
-
-// default error handler
-app.use(function(err, req, res, next) {
-  if (res.headersSent) {
-    return next(err);
-  }
-
-  return res.status(err.status || HTTP_SERVER_ERROR).render('500');
-});
 
 //registering the routes
 routes(app);

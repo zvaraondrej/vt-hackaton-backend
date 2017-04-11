@@ -172,7 +172,7 @@ module.exports = function makeWebpackConfig(options) {
 
         new HtmlWebpackPlugin({
             template: PATHS.INDEX_HTML,
-            filename: 'client/index.html',
+            filename: 'index.html',
             alwaysWriteToDisk: true
         }),
 
@@ -181,7 +181,7 @@ module.exports = function makeWebpackConfig(options) {
         // Define free global variables
         new webpack.DefinePlugin({
                 'process.env': {
-                    NODE_ENV: BUILD ? '"production"' : ( TEST ? "test" : "development" )
+                    NODE_ENV: BUILD ? JSON.stringify("production") : ( TEST ? JSON.stringify("test") : JSON.stringify("development") )
                 }
             })
     
@@ -232,7 +232,8 @@ module.exports = function makeWebpackConfig(options) {
      * Dev server configuration
      */
     config.devServer = {
-        contentBase: './client/',
+        contentBase: '/',
+        historyApiFallback: true,
         stats: {
             modules: false,
             cached: false,
