@@ -90,6 +90,11 @@ module.exports = function makeWebpackConfig(options) {
 
         rules: [{
             test: /\.js$/,
+            enforce: "pre",
+            exclude: /node_modules/,
+            use: ['jshint-loader']
+        }, {
+            test: /\.js$/,
             exclude: /node_modules/,
             use: ['babel-loader'],
         }, {
