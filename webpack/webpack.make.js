@@ -115,7 +115,7 @@ module.exports = function makeWebpackConfig(options) {
                 'style-loader',
                 'css-loader',
                 'resolve-url-loader',
-                'sass-loader'
+                'sass-loader?sourceMap'
             ],
             include: [
                 path.resolve(PATHS.NODE_MODULES, '/materialize-css/sass/*.scss'),

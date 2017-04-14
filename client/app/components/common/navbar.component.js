@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 export default class Navbar extends React.Component {
   render() {
     return (
-      <ul role="nav">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-      </ul>
+       <nav>
+        <div className="container">
+          <div className="nav-wrapper">
+            <Link className="brand-logo text-logo" to="/">Numwords App</Link>
+            <ul id="nav-mobile" className="right">
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/about">About</Link></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     )
   }
 }
