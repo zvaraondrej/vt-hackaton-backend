@@ -1,0 +1,2 @@
+export const FETCH_WORDS_SUCCESS = 'FETCH_WORDS_SUCCESS';  
+export const CLEAR_WORDS = 'CLEAR_WORDS';  

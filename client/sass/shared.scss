@@ -1,5 +1,32 @@
 .text-logo {
 
-		font-family: "MrsSheppards";
+	font-family: "MrsSheppards";
 
+}
+
+.num-button {
+
+  padding: 0px!important;
+
+}
+
+.btn {
+	height: auto;
+	min-height: 80px;
+	width: 100%;
+	border-radius: 0;
+	box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.14), 0 2px 2px 0px rgba(0, 0, 0, 0.14), 0 2px 2px 0px rgba(0, 0, 0, 0.14);
+
+
+	p {
+		margin: 10px;
+		line-height: 10px;
 	}
+
+}
+
+.btn-row {
+
+	margin: 0;
+
+}
