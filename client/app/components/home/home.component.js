@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'; 
 import * as wordsActions from './../../actions/words.actions';
 
+import WordsList from './../words-list/words-list.component';
 import Keypad from './../keypad/keypad.component';
 import NumDisplay from './../num-display/num-display.component';
 
@@ -54,6 +55,8 @@ class Home extends React.Component {
 
         <div className="row">
           <div className="col s12 m8 offset-m2 l6 offset-l3">
+
+            <WordsList words={this.props.words} />
         
             <NumDisplay numbers={numbers} />
 
