@@ -7,6 +7,7 @@ coverage
 
 # build
 build
+dist
 
 # dependency directory
 node_modules
@@ -16,3 +17,6 @@ npm-debug.log
 
 # tmp file
 .tmp
+
+# editor files
+.vscode

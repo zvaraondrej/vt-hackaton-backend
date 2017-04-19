@@ -143,7 +143,7 @@ module.exports = function makeWebpackConfig(options) {
     if(!TEST) {
         config.plugins.push(
             new CommonsChunkPlugin({
-                name: ['vendor', 'manifest'],
+                name: ['vendor'],
                 minChunks: Infinity
             }));
     }

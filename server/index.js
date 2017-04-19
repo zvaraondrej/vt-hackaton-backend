@@ -64,12 +64,9 @@ if(env === 'development' || env === 'test') {
 
 if(env === 'production') {
 
-    // favicon dest
-    app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
-
     // production logging to the log files
     const logDir = config.logDir;
-    fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+    fs.existsSync(logDir) || fs.mkdirSync(logDir);
 
     var accessLogStream = FileStreamRotator.getStream({
         date_format: 'YYYYMMDD',
@@ -82,8 +79,11 @@ if(env === 'production') {
         stream: accessLogStream
     }));
 
+    app.use(express.static(path.join(config.root, 'client')));
 }
 
+// favicon dest
+app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
 
 // parsers
 app.use(bodyParser.urlencoded({ extended: false }));
