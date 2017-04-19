@@ -26,4 +26,4 @@ Build
 gulp build
 ```
 
-Run ```gulp serve``` to build and run the app
+Run ```gulp serve:prod``` to build and run the app
