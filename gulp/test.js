@@ -15,20 +15,14 @@ export default function start(gulp, plugins){
     });
 
   gulp.task('test', cb => {
-      // return runSequence('test:server', 'test:client', cb);
+      return runSequence('test:server', cb);
   });
 
   gulp.task('test:server', cb => {
       runSequence(
           'env:test',
-          // 'mocha:unit',
           'mocha:integration',
           cb);
-  });
-
-  gulp.task('mocha:unit', () => {
-    return gulp.src(paths.server.test.unit)
-      .pipe(mocha());
   });
 
   gulp.task('mocha:integration', () => {

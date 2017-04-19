@@ -6,6 +6,7 @@
 
 import fs from 'fs';
 import path from 'path';  
+import http from 'http';
 import express from 'express';  
 import favicon from 'serve-favicon';
 import morgan from 'morgan';
@@ -24,7 +25,8 @@ if(node_env === 'development' || node_env === 'test') {
 }
 
 
-const app = express();
+let app = express();
+const server = http.createServer(app);
 const env = app.get('env');
 
 
@@ -101,15 +103,8 @@ routes(app);
 
 
 // start the server
-/*app.listen(config.port, function(err) {  
-  if (err) {
-    console.log(err);
-  }
-});
-*/
-
-app.shy = app.listen(config.port, config.ip, () => {
-    console.log(`Express listening on port ${config.port}, env = ${env}`);
+app.shy = server.listen(config.port, config.ip, () => {
+    console.log(`Express listenisang on port ${config.port}, env = ${env}`);
     app.emit('app_start');
 });
 
