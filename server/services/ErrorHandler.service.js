@@ -1,13 +1,10 @@
 /**
- * Using Rails-like standard naming convention for endpoints.
- * GET     /api/products              ->  product list
- * GET     /api/product/:id          ->  product detail
+ * Error handling
  */
 
 'use strict';
 
 import _ from 'lodash';
-
 import ERROR from './../enums/Error.enum';
 
 export default class ErrorHandlerService {
@@ -16,6 +13,9 @@ export default class ErrorHandlerService {
     this.ERROR = ERROR;
   }
 
+  /**
+  * Return code 404 and proper error msg
+  */
   respondEntityNotFound(res) {
     return function(entity) {
       if(!entity) {
@@ -26,6 +26,10 @@ export default class ErrorHandlerService {
     };
   }
 
+
+  /**
+  * Return code 500 and proper error msg
+  */
   handleError(res, statusCode, msg) {
     statusCode = statusCode || 500;
     return function(err) {
@@ -33,7 +37,5 @@ export default class ErrorHandlerService {
       return res.status(statusCode).json({ msg: err.toString()});
     };
   }
-
-
 
 }

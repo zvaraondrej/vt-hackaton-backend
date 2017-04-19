@@ -16,7 +16,6 @@ import config from './config';
 import routes from './routes';
 import FileStreamRotator from 'file-stream-rotator';
 
-/* eslint-disable no-console */
 // lets ensure NODE_ENV is set
 var node_env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -43,7 +42,6 @@ if(env === 'development') {
             timings: true,
             chunks: false
         },
-        // publicPath: webpackConf.output.publicPath
     }));
 
     app.use(require('webpack-hot-middleware')(compiler));  
@@ -60,7 +58,6 @@ if(env === 'development' || env === 'test') {
     // dev logging to the console
     app.use(morgan('dev'));
 
-    console.log(path.join(config.root, '.tmp'));
     // index.html path
     app.use(express.static(path.join(config.root, '.tmp')));
 }

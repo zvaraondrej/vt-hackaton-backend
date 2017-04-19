@@ -1,7 +1,6 @@
 /**
- * Using Rails-like standard naming convention for endpoints.
- * GET     /api/products              ->  product list
- * GET     /api/product/:id          ->  product detail
+ * Main controller for the /words path
+ * /api/words -> words list
  */
 
 'use strict';
@@ -33,7 +32,6 @@ export default class WordsController {
       return Promise.reject(new Error(this.ERROR.MSG.INVALID_ARGUMENT))
         .catch(this.errorHandler.handleError(res));
     }
-
     
     try {
       return this.t9Service.getWordsFromNumber(value)

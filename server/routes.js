@@ -15,11 +15,11 @@ export default function(app) {
 
     // All undefined asset or api routes should return a 404
     app.route('/:url(api)/*')
-        .get(pageNotFound);
+			.get(pageNotFound);
 
-    // All other routes should redirect to the index.html
+    // All other routes should redirect to the index.html, important for html5mode urls
     app.route('/*')
-        .get((req, res) => {
-            res.sendFile(path.resolve(`${config.root}/index.html`));
-        });
+    	.get((req, res) => {
+        res.sendFile(path.resolve(`${config.root}/index.html`));
+   	 });
 }

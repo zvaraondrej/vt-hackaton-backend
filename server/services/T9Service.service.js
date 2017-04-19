@@ -1,6 +1,6 @@
 
 /**
- * 
+ * Service responsible for T9 functionality
  */
 
 'use strict';
@@ -23,15 +23,14 @@ export default class T9Service {
   }
 
 
-  /**
-  * 
-  */
+ /**
+ * Fetch words from T9 table
+ */
   getWordsFromNumber = function (number){
     
     var matches = [""];
     var tmp = [];
     var digits = number.toString().split('');
-
 
     // 2 : ['a', 'b', 'c'],
     // 3 : ['d', 'e', 'f'],

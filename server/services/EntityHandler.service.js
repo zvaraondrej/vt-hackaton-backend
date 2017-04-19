@@ -1,5 +1,5 @@
 /**
- * Using Rails-like standard naming convention for endpoints.
+ * Success entity handler
  */
 
 'use strict';
@@ -9,7 +9,7 @@ export default class EntityHandlerService {
   constructor() {}
 
   /**
-  * GET /api/words -> words list
+  * Return code 200 and json entity
   */
   respondWithEntity(res, statusCode) {
     statusCode = statusCode || 200;

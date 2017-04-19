@@ -1,3 +1,7 @@
+/**
+ * main router file for /words path
+ */
+
 'use strict';
 
 import _ from 'lodash';

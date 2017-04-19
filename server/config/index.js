@@ -1,4 +1,6 @@
-/*eslint no-process-env:0*/
+/*
+* Main app config
+*/
 
 import path from 'path';
 
