@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'; 
 import * as wordsActions from './../../actions/words.actions';
 
+import ErrorList from './../error-list/error-list.component';
 import WordsList from './../words-list/words-list.component';
 import Keypad from './../keypad/keypad.component';
 import NumDisplay from './../num-display/num-display.component';
@@ -56,8 +57,12 @@ class Home extends React.Component {
         <div className="row">
           <div className="col s12 m8 offset-m2 l6 offset-l3">
 
-            <WordsList words={this.props.words} />
-        
+            { this.props.errors && this.props.errors.length > 0 ? (
+              <ErrorList errors={this.props.errors} />
+            ) : (
+              <WordsList words={this.props.words} />
+            )}
+
             <NumDisplay numbers={numbers} />
 
             <Keypad buttons={buttons} 
@@ -76,8 +81,9 @@ class Home extends React.Component {
 
 
 function mapStateToProps(state, ownProps) {
- return {
-    words: state.words
+  return {
+    words: state.words.data,
+    errors: state.words.err
   };
 } 
 

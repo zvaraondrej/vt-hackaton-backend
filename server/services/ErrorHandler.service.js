@@ -19,7 +19,7 @@ export default class ErrorHandlerService {
   respondEntityNotFound(res) {
     return function(entity) {
       if(!entity) {
-        res.status(404).send(this.ERROR.MSG.NOT_FOUND);
+        res.status(404).json({ msg: this.ERROR.MSG.NOT_FOUND});
         return null;
       }
       return entity;
@@ -30,8 +30,7 @@ export default class ErrorHandlerService {
     statusCode = statusCode || 500;
     return function(err) {
       err = msg || err;
-      console.log(err)
-      return res.status(statusCode).send(err.toString());
+      return res.status(statusCode).json({ msg: err.toString()});
     };
   }
 

@@ -30,3 +30,19 @@
 	margin: 0;
 
 }
+
+.item-list {
+
+  height: 350px;
+  overflow: auto;
+	margin-top: 20px;
+
+	.err-msg {
+
+    width: 100%;
+
+  }
+
+}
+
+
