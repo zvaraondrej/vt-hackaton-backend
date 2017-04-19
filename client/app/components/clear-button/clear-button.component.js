@@ -9,6 +9,6 @@ export default class ClearButton extends React.Component {
           Clear
         </button>
       </div>
-    )
+    );
   }
 }

@@ -13,6 +13,6 @@ export default class NumDisplay extends React.Component {
           </div>
         </form>
       </div>
-    )
+    );
   }
 }

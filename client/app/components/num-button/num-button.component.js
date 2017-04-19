@@ -8,6 +8,6 @@ export default class NumButton extends React.Component {
         <p className="grey-text text-darken-4">{this.props.value}</p>
         <p className="grey-text text-darken-1"><sub>{this.props.text}</sub></p>
       </button>
-    )
+    );
   }
 }

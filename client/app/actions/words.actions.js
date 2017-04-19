@@ -22,5 +22,5 @@ export function fetchWordsError(error){
 }
 
 export function clearWords(){
-  return {type: types.CLEAR_WORDS, data: [], err: [] }
+  return {type: types.CLEAR_WORDS, data: [], err: [] };
 }

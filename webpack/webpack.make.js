@@ -92,7 +92,7 @@ module.exports = function makeWebpackConfig(options) {
             test: /\.js$/,
             enforce: "pre",
             exclude: /node_modules/,
-            use: ['jshint-loader']
+            use: ['jsxhint-loader']
         }, {
             test: /\.js$/,
             exclude: /node_modules/,

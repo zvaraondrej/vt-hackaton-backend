@@ -27,6 +27,6 @@ export default class WordsListItem extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

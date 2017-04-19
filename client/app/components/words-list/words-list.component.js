@@ -24,6 +24,6 @@ export default class WordsList extends React.Component {
           </div>
         )}
       </div>
-    )
+    );
   }
 }

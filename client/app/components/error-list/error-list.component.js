@@ -13,6 +13,6 @@ export default class ErrorList extends React.Component {
         ))}
 
       </div>
-    )
+    );
   }
 }

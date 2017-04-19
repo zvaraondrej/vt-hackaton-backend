@@ -11,7 +11,7 @@ export default class Keypad extends React.Component {
         <div className="col s4 num-button">
           <NumButton value={buttons[index].value} text={buttons[index].text} onClick={() => this.props.onNumBtnClick(index)} />
         </div>
-    )
+    );
   } 
 
   render() {
@@ -36,7 +36,7 @@ export default class Keypad extends React.Component {
           <ClearButton onClick={() => this.props.onClearBtnClick()} />
         </div>
       </div>
-    )
+    );
   }
 }
 

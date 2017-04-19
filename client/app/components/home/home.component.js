@@ -68,19 +68,19 @@ class Home extends React.Component {
             <Keypad buttons={buttons} 
                     numbers={this.numbers} 
                     onNumBtnClick={(i) => this.handleNumBtnClick(i)} 
-                    onClearBtnClick={(i) => this.handleClearBtnClick()} 
+                    onClearBtnClick={() => this.handleClearBtnClick()} 
             />
 
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     words: state.words.data,
     errors: state.words.err
