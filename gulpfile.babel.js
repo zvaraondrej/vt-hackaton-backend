@@ -13,6 +13,8 @@ import webpack from './gulp/webpack';
 import serve from './gulp/serve';
 import start from './gulp/start';
 import transpile from './gulp/transpile';
+import env from './gulp/env';
+import test from './gulp/test';
 
 clean(gulp);
 build(gulp);
@@ -21,3 +23,5 @@ copy(gulp);
 webpack(gulp, plugins);
 serve(gulp);
 start(gulp, plugins);
+env(gulp, plugins);
+test(gulp, plugins);

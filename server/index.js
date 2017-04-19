@@ -101,8 +101,17 @@ routes(app);
 
 
 // start the server
-app.listen(config.port, function(err) {  
+/*app.listen(config.port, function(err) {  
   if (err) {
     console.log(err);
   }
 });
+*/
+
+app.shy = app.listen(config.port, config.ip, () => {
+    console.log(`Express listening on port ${config.port}, env = ${env}`);
+    app.emit('app_start');
+});
+
+
+export default app;
