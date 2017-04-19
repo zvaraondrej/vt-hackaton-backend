@@ -27,3 +27,9 @@ gulp build
 ```
 
 Run ```gulp serve:prod``` to build and run the app
+
+Test
+-----
+```
+gulp test
+```
