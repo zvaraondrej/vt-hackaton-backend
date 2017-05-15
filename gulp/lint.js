@@ -1,19 +1,35 @@
+import _ from 'lodash';
+import paths from './paths';
+import lazypipe from 'lazypipe';
+import runSequence from 'run-sequence';
+
 export default function lint(gulp, plugins){
 
-gulp.task('lint', () => {
-    // ESLint ignores files with "node_modules" paths.
-    // So, it's best to have gulp ignore the directory as well.
-    // Also, Be sure to return the stream from the task;
-    // Otherwise, the task may end before the stream has finished.
-    return gulp.src(['client/**/*.js', 'server/**/*.js', '!node_modules/**'])
-        // eslint() attaches the lint output to the "eslint" property
-        // of the file object so it can be used by other modules.
-        .pipe(plugins.eslint())
-        // eslint.format() outputs the lint results to the console.
-        // Alternatively use eslint.formatEach() (see Docs).
-        .pipe(plugins.eslint.format())
-        // To have the process exit with an error code (1) on
-        // lint error, return the stream and pipe to failAfterError last.
-        .pipe(plugins.eslint.failAfterError());
-});
+    let lintClientScripts = lazypipe()
+        .pipe(plugins.eslint)
+        .pipe(plugins.eslint.format);
+
+    let lintServerScripts = lazypipe()
+        .pipe(plugins.eslint)
+        .pipe(plugins.eslint.format);
+
+    gulp.task('lint:scripts', cb => {
+        runSequence(['lint:scripts:client', 'lint:scripts:server'], cb)
+    });
+
+    gulp.task('lint:scripts:client', () => {
+        return gulp.src(paths.client.scripts)
+            .pipe(lintClientScripts());
+    });
+
+    gulp.task('lint:scripts:server', () => {
+        return gulp.src(paths.server.scripts)
+            .pipe(lintServerScripts());
+    });
+
+    
+    gulp.task('lint:watch:scripts', () => {
+        gulp.watch(['client/**/*.js', 'server/**/*.js'], ['lint:scripts']);
+  });
+
 }
