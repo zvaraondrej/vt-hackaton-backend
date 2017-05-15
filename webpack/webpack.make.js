@@ -70,10 +70,10 @@ module.exports = function makeWebpackConfig(options) {
     config.module = {
 
         rules: [{
-            test: /\.js$/,
             enforce: "pre",
+            test: /\.js$/,
             exclude: /node_modules/,
-            use: ['jsxhint-loader']
+            loader: "eslint-loader",
         }, {
             test: /\.js$/,
             exclude: /node_modules/,
