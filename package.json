@@ -8,6 +8,7 @@
     "start": "babel-watch server/index.js"
   },
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "babel-register": "^6.24.1",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",

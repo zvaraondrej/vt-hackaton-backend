@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import NumButton from './../num-button/num-button.component';
 import ClearButton from './../clear-button/clear-button.component';
@@ -42,3 +43,15 @@ export default class Keypad extends React.Component {
     );
   }
 }
+
+Keypad.propTypes = {
+  onNumBtnClick: PropTypes.func.isRequired,
+  onClearBtnClick: PropTypes.func.isRequired,
+  buttons: PropTypes.any,
+};
+
+Keypad.defaultProps = {
+  value: '',
+  text: '',
+  buttons: [],
+};

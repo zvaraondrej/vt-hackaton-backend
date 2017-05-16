@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as wordsActions from './../../actions/words.actions';
@@ -88,5 +89,17 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(wordsActions, dispatch),
   };
 }
+
+Home.propTypes = {
+  actions: PropTypes.object,
+  errors: PropTypes.array,
+  words: PropTypes.array,
+};
+
+Home.defaultProps = {
+  actions: [],
+  errors: [],
+  words: [],
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
