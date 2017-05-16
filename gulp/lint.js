@@ -1,6 +1,6 @@
-import paths from './paths';
 import lazypipe from 'lazypipe';
 import runSequence from 'run-sequence';
+import paths from './paths';
 
 export default function lint(gulp, plugins) {
   const lintScripts = lazypipe().pipe(plugins.eslint).pipe(plugins.eslint.format);

@@ -1,19 +1,17 @@
-import paths from './paths';
 import through from 'through2';
 import runSequence from 'run-sequence';
 import prettierEslint from 'prettier-eslint';
+import paths from './paths';
 
 export default function prettify(gulp) {
   function format() {
-    return through.obj(parseFile);
-
     function parseFile(file, encoding, callback) {
       if (file.isNull()) {
         return callback(null, file);
       }
 
       if (file.isStream()) {
-        return callback(new utils.PluginError('prettier-eslint', "doesn't support Streams"));
+        return callback(new utils.PluginError('prettier-eslint', "doesn't support Streams")); // eslint-disable-line
       }
 
       const sourceCode = file.contents.toString();
@@ -33,10 +31,12 @@ export default function prettify(gulp) {
         text: sourceCode,
       });
 
-      file.contents = new Buffer(formatted, encoding);
+      file.contents = new Buffer(formatted, encoding); // eslint-disable-line
 
       return callback(null, file);
     }
+
+    return through.obj(parseFile);
   }
 
   gulp.task('prettify', (cb) => {

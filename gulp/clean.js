@@ -1,5 +1,5 @@
-import paths from './paths';
 import del from 'del';
+import paths from './paths';
 
 export default function clean(gulp) {
   gulp.task('clean:tmp', () => del([`./${paths.tmp}/**/*`], { dot: true }));

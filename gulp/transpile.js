@@ -1,5 +1,4 @@
 import lazypipe from 'lazypipe';
-import runSequence from 'run-sequence';
 import paths from './paths';
 
 export default function transpile(gulp, plugins) {

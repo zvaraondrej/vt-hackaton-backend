@@ -3,7 +3,7 @@ import paths from './paths';
 
 export default function start(gulp, plugins) {
   function onServerLog(log) {
-    console.log(
+    console.log( // eslint-disable-line
       plugins.util.colors.white('[') +
         plugins.util.colors.yellow('nodemon') +
         plugins.util.colors.white('] ') +
