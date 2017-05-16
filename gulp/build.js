@@ -12,7 +12,7 @@ export default function build(gulp){
         'clean:dist',
         'clean:tmp'
       ],
-      'transpile:server',
+          'transpile:server',
       [
         'copy:package',
         'copy:favicon',

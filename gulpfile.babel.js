@@ -16,6 +16,7 @@ import transpile from './gulp/transpile';
 import env from './gulp/env';
 import test from './gulp/test';
 import lint from './gulp/lint';
+import prettify from './gulp/prettify';
 
 clean(gulp);
 build(gulp);
@@ -27,3 +28,4 @@ serve(gulp);
 start(gulp, plugins);
 env(gulp, plugins);
 test(gulp, plugins);
+prettify(gulp);
