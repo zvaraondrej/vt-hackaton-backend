@@ -49,6 +49,6 @@ export default function prettify(gulp) {
     gulp.src(paths.client.scripts).pipe(format()).pipe(gulp.dest(paths.client.root)),
   );
   gulp.task('prettify:server', () =>
-    gulp.src(paths.server.scripts).pipe(format()).pipe(gulp.dest(paths.client.root)),
+    gulp.src(paths.server.scripts).pipe(format()).pipe(gulp.dest(paths.server.root)),
   );
 }
