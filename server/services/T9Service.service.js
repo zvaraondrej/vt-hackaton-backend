@@ -31,14 +31,14 @@ export default class T9Service {
     // cdg cdh cdi | ceg ceh cei | cfg cfh cfi |
 
     // iterate over all digits in the input number
-    for (let i = 0; i < digits.length; i++) {
+    for (let i = 0; i < digits.length; i += 1) {
       // if 0 return false;
       if (digits[i] <= 1) return Promise.reject(new Error(ERROR.MSG.VALUE_RANGE));
 
       // iterate over all elements in results array
-      for (let j = 0; j < matches.length; j++) {
+      for (let j = 0; j < matches.length; j += 1) {
         // iterate over all letters corresponding to the current digit
-        for (let k = 0; k < this.charMap[digits[i]].length; k++) {
+        for (let k = 0; k < this.charMap[digits[i]].length; k += 1) {
           tmp.push(matches[j] + this.charMap[digits[i]][k]);
         }
       }

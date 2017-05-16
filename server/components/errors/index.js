@@ -12,6 +12,6 @@ export default function pageNotFound(req, res) {
       return res.status(result.status).json(result);
     }
 
-    res.send(html);
+    return res.send(html);
   });
 }

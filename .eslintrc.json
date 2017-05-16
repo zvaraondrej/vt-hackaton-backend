@@ -8,12 +8,17 @@
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/forbid-prop-types": [0],
-        "import/no-extraneous-dependencies": [2, { "devDependencies": true }]
+        "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
+        "global-require": [0],
+        "no-multi-assign": [0],
+        "func-names": [0],
+        "class-methods-use-this": [0]
     },
     "env": {
         "browser": true,
         "node": true,
         "mocha": true,
-        "commonjs": true
+        "commonjs": true,
+        "es6": true
     }
 }

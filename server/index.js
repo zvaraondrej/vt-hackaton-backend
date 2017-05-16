@@ -61,6 +61,7 @@ if (env === 'development' || env === 'test') {
 if (env === 'production') {
   // production logging to the log files
   const logDir = config.logDir;
+  /* eslint-disable no-unused-expressions */
   fs.existsSync(logDir) || fs.mkdirSync(logDir);
 
   const accessLogStream = FileStreamRotator.getStream({
@@ -96,6 +97,8 @@ routes(app);
 
 // start the server
 app.shy = server.listen(config.port, config.ip, () => {
+/* eslint-disable no-console */
+
   console.log(`Express listenisang on port ${config.port}, env = ${env}`);
   app.emit('app_start');
 });
