@@ -15,7 +15,6 @@ export default function ErrorList(props) {
   );
 }
 
-
 ErrorList.propTypes = {
   errors: PropTypes.array,
 };

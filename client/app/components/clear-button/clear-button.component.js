@@ -14,7 +14,6 @@ export default function ClearButton(props) {
   );
 }
 
-
 ClearButton.propTypes = {
   onClick: PropTypes.func.isRequired,
 };

@@ -97,7 +97,7 @@ routes(app);
 
 // start the server
 app.shy = server.listen(config.port, config.ip, () => {
-/* eslint-disable no-console */
+  /* eslint-disable no-console */
 
   console.log(`Express listenisang on port ${config.port}, env = ${env}`);
   app.emit('app_start');
