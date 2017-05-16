@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default class ErrorList extends React.Component {
-
   render() {
     return (
       <div className="item-list row btn-row grey lighten-4 valign-wrapper">

@@ -9,7 +9,6 @@ import Keypad from './../keypad/keypad.component';
 import NumDisplay from './../num-display/num-display.component';
 
 class Home extends React.Component {
-
   constructor() {
     super();
     this.setButtons();
@@ -57,11 +56,9 @@ class Home extends React.Component {
         <div className="row">
           <div className="col s12 m8 offset-m2 l6 offset-l3">
 
-            { this.props.errors && this.props.errors.length > 0 ? (
-              <ErrorList errors={this.props.errors} />
-            ) : (
-              <WordsList words={this.props.words} />
-            )}
+            {this.props.errors && this.props.errors.length > 0
+              ? <ErrorList errors={this.props.errors} />
+              : <WordsList words={this.props.words} />}
 
             <NumDisplay numbers={numbers} />
 
@@ -78,7 +75,6 @@ class Home extends React.Component {
     );
   }
 }
-
 
 function mapStateToProps(state) {
   return {

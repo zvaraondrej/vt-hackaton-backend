@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default class NumDisplay extends React.Component {
-
   render() {
     return (
       <div className="row btn-row">

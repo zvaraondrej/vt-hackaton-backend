@@ -20,8 +20,8 @@ export default class Footer extends React.Component {
         </div>
         <div className="footer-copyright">
           <div className="container">
-              © 2017 Ondrej Zvara
-            </div>
+            © 2017 Ondrej Zvara
+          </div>
         </div>
       </footer>
     );
