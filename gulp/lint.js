@@ -13,8 +13,18 @@ export default function lint(gulp, plugins){
         .pipe(plugins.eslint)
         .pipe(plugins.eslint.format);
 
+    /*let lintClientScripts = lazypipe()
+        .pipe(plugins.eslint, `${paths.client.root}.eslintrc`)
+        .pipe(plugins.eslint.format);
+
+    let lintServerScripts = lazypipe()
+        .pipe(plugins.eslint, `${paths.server.root}.eslintrc`)
+        .pipe(plugins.eslint.format);*/
+
+
     gulp.task('lint:scripts', cb => {
-        runSequence(['lint:scripts:client', 'lint:scripts:server'], cb)
+        // runSequence(['lint:scripts:client', 'lint:scripts:server'], cb)
+        runSequence(['lint:scripts:client'], cb)
     });
 
     gulp.task('lint:scripts:client', () => {
@@ -27,7 +37,6 @@ export default function lint(gulp, plugins){
             .pipe(lintServerScripts());
     });
 
-    
     gulp.task('lint:watch:scripts', () => {
         gulp.watch(['client/**/*.js', 'server/**/*.js'], ['lint:scripts']);
   });
