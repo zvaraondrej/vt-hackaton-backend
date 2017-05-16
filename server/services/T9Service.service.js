@@ -1,9 +1,3 @@
-/**
- * Service responsible for T9 functionality
- */
-
-'use strict';
-
 import ERROR from './../enums/Error.enum';
 
 export default class T9Service {
@@ -23,10 +17,10 @@ export default class T9Service {
   /**
  * Fetch words from T9 table
  */
-  getWordsFromNumber = function(number) {
-    var matches = [''];
-    var tmp = [];
-    var digits = number.toString().split('');
+  getWordsFromNumber(number) {
+    let matches = [''];
+    let tmp = [];
+    const digits = number.toString().split('');
 
     // 2 : ['a', 'b', 'c'],
     // 3 : ['d', 'e', 'f'],
@@ -37,14 +31,14 @@ export default class T9Service {
     // cdg cdh cdi | ceg ceh cei | cfg cfh cfi |
 
     // iterate over all digits in the input number
-    for (var i = 0; i < digits.length; i++) {
+    for (let i = 0; i < digits.length; i++) {
       // if 0 return false;
       if (digits[i] <= 1) return Promise.reject(new Error(ERROR.MSG.VALUE_RANGE));
 
       // iterate over all elements in results array
-      for (var j = 0; j < matches.length; j++) {
+      for (let j = 0; j < matches.length; j++) {
         // iterate over all letters corresponding to the current digit
-        for (var k = 0; k < this.charMap[digits[i]].length; k++) {
+        for (let k = 0; k < this.charMap[digits[i]].length; k++) {
           tmp.push(matches[j] + this.charMap[digits[i]][k]);
         }
       }
@@ -54,5 +48,5 @@ export default class T9Service {
     }
 
     return Promise.resolve(matches);
-  };
+  }
 }

@@ -1,9 +1,3 @@
-/**
- * main router file for /words path
- */
-
-
-import _ from 'lodash';
 import express from 'express';
 import WordsController from './words.controller';
 

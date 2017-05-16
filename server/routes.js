@@ -2,7 +2,6 @@
  * Main application routes
  */
 
-
 import path from 'path';
 import config from './config';
 import pageNotFound from './components/errors';

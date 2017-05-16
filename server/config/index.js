@@ -1,7 +1,3 @@
-/*
-* Main app config
-*/
-
 import path from 'path';
 
 export default {

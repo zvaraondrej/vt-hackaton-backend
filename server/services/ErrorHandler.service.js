@@ -1,9 +1,3 @@
-/**
- * Error handling
- */
-
-
-import _ from 'lodash';
 import ERROR from './../enums/Error.enum';
 
 export default class ErrorHandlerService {
@@ -27,8 +21,7 @@ export default class ErrorHandlerService {
   /**
   * Return code 500 and proper error msg
   */
-  handleError(res, statusCode, msg) {
-    statusCode = statusCode || 500;
+  handleError(res, statusCode = 500, msg) {
     return function (err) {
       err = msg || err;
       return res.status(statusCode).json({ msg: err.toString() });

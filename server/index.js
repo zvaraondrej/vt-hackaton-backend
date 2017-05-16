@@ -2,7 +2,6 @@
  * Main application server config
  */
 
-
 import fs from 'fs';
 import path from 'path';
 import http from 'http';
@@ -12,14 +11,14 @@ import morgan from 'morgan';
 import errorhandler from 'errorhandler';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import FileStreamRotator from 'file-stream-rotator';
 import config from './config';
 import routes from './routes';
-import FileStreamRotator from 'file-stream-rotator';
 
-// lets ensure NODE_ENV is set
-const node_env = (process.env.NODE_ENV = process.env.NODE_ENV || 'development');
+// lets ensure nodeEnv is set
+const nodeEnv = (process.env.nodeEnv = process.env.nodeEnv || 'development');
 
-if (node_env === 'development' || node_env === 'test') {
+if (nodeEnv === 'development' || nodeEnv === 'test') {
   require('babel-register');
 }
 

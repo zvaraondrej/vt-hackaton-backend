@@ -1,7 +1,3 @@
-/*
-* default 404 error
-*/
-
 export default function pageNotFound(req, res) {
   const viewFilePath = '404';
   const statusCode = 404;

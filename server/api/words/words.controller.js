@@ -1,9 +1,3 @@
-/**
- * Main controller for the /words path
- * /api/words -> words list
- */
-
-
 import _ from 'lodash';
 import T9Service from './../../services/T9Service.service';
 import ErrorHandlerService from './../../services/ErrorHandler.service';
