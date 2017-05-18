@@ -14,11 +14,28 @@ if (nodeEnv === 'development' || nodeEnv === 'test') {
   require('babel-register');
 }
 
-const app = new Tilesplash('postgres://brasko@localhost/hackaton');
+const app = new Tilesplash(db);
 
-// render('SELECT ST_AsGeoJSON(the_geom) as the_geom_geojson FROM layer WHERE ST_Intersects(the_geom, !bbox_4326!)');
-app.layer('rivers', (tile, render) => {
-  render('SELECT ST_AsGeoJSON(geom) FROM rivers;');
+const CORS = function (req, res, tile, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, Content-Length, X-Requested-With',
+  );
+  next();
+};
+
+app.layer('rivers', CORS, (tile, render) => {
+  console.log(tile);
+  render({
+    rivers: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM rivers WHERE ST_Intersects(geom, !bbox_4326!)',
+    lakes: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM lakes WHERE ST_Intersects(geom, !bbox_4326!)',
+    islands: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM islands WHERE ST_Intersects(geom, !bbox_4326!)',
+    // countries: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM countries WHERE ST_Intersects(geom, !bbox_4326!)',
+    // regions: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM regions WHERE ST_Intersects(geom, !bbox_4326!)',
+    urban_areas: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM urban_areas WHERE ST_Intersects(geom, !bbox_4326!)',
+  });
 });
 
 const env = app.server.get('env');
