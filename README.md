@@ -7,7 +7,7 @@ Example App using React, Redux & Express
 Install
 -----
 ```
-npm install
+yarn install
 ```
 
 Develop
@@ -17,7 +17,7 @@ gulp serve
 ```
 or
 ```
-npm start
+yarn run start
 ```
 
 Build
@@ -32,4 +32,10 @@ Test
 -----
 ```
 gulp test
+```
+
+Prettify
+-----
+```
+gulp prettify
 ```
