@@ -5,7 +5,7 @@ export default function build(gulp) {
     runSequence(
       ['clean:dist', 'clean:tmp'],
       'transpile:server',
-      ['copy:package', 'copy:favicon', 'webpack:dist'],
+      ['copy:package'],
       cb,
     );
   });
