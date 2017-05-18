@@ -34,15 +34,20 @@ const CORS = function (req, res, tile, next) {
   next();
 };
 
-app.layer('rivers', CORS, (tile, render) => {
+app.layer('rivers', CORS, { simplify_distance: 20 }, (tile, render) => {
   console.log(tile);
   render({
-    rivers: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM rivers WHERE ST_Intersects(geom, !bbox_4326!)',
-    lakes: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM lakes WHERE ST_Intersects(geom, !bbox_4326!)',
-    islands: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM islands WHERE ST_Intersects(geom, !bbox_4326!)',
+    becej_parcels: [
+      'SELECT id, !x! as x, !y! as y, !z! as z,  ST_AsGeoJSON(geom) as the_geom_geojson FROM becej_4326 WHERE ST_Intersects(geom, !bbox_4326!)',
+    ],
+    // becej_lpis: 'SELECT id,  ST_AsGeoJSON(geom) as the_geom_geojson FROM becej_4326 WHERE ST_Intersects(geom, !bbox_4326!)',
+    // becej_parcel: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM becej_lpis WHERE ST_Intersects(geom, !bbox_4326!)',
+    // rivers: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM rivers WHERE ST_Intersects(geom, !bbox_4326!)',
+    // lakes: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM lakes WHERE ST_Intersects(geom, !bbox_4326!)',
+    // islands: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM islands WHERE ST_Intersects(geom, !bbox_4326!)',
     // countries: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM countries WHERE ST_Intersects(geom, !bbox_4326!)',
     // regions: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM regions WHERE ST_Intersects(geom, !bbox_4326!)',
-    urban_areas: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM urban_areas WHERE ST_Intersects(geom, !bbox_4326!)',
+    // urban_areas: 'SELECT id, ST_AsGeoJSON(geom) as the_geom_geojson FROM urban_areas WHERE ST_Intersects(geom, !bbox_4326!)',
   });
 });
 
