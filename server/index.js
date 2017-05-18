@@ -14,6 +14,14 @@ if (nodeEnv === 'development' || nodeEnv === 'test') {
   require('babel-register');
 }
 
+const db = {
+  user: config.DB.USER,
+  database: config.DB.NAME,
+  password: config.DB.PASS,
+  port: config.DB.PORT,
+  host: config.DB.HOST,
+};
+
 const app = new Tilesplash(db);
 
 const CORS = function (req, res, tile, next) {

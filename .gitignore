@@ -2,6 +2,8 @@
 logs
 *.log
 
+/server/config/local.env.js
+
 # istanbul
 coverage
 
