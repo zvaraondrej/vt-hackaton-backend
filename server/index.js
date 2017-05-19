@@ -8,10 +8,16 @@ import Tilesplash from 'tilesplash';
 import config from './config';
 
 // lets ensure nodeEnv is set
-const nodeEnv = (process.env.nodeEnv = process.env.nodeEnv || 'development');
+const nodeEnv = process.env.NODE_ENV || 'development';
 
 if (nodeEnv === 'development' || nodeEnv === 'test') {
   require('babel-register');
+}
+
+if (!config.DB.USER) {
+  console.log(
+    `*************Missing configuration file! Please fill in server/config/${nodeEnv}.env.js file.**************`,
+  );
 }
 
 const db = {

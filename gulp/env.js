@@ -1,9 +1,9 @@
 import paths from './paths';
 
 export default function env(gulp, plugins) {
-  gulp.task('env:local', () => {
+  gulp.task('env:dev', () => {
     plugins.env({
-      vars: { NODE_ENV: 'local' },
+      vars: { NODE_ENV: 'development' },
     });
   });
   gulp.task('env:test', () => {

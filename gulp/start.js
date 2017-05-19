@@ -14,17 +14,15 @@ export default function start(gulp, plugins) {
 
   gulp.task('start:server', () => {
     process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-    nodemon(`-w ${paths.server.root} ${paths.server.root} --exec babel-node`).on(
-      'log',
-      onServerLog,
-    );
+    nodemon(
+      `-w ${paths.server.root} ${paths.server.root} --exec ./node_modules/.bin/babel-node `,
+    ).on('log', onServerLog);
   });
 
   gulp.task('start:server:prod', () => {
     process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-    nodemon(`-w ${paths.dist}/${paths.server.root} ${paths.dist}/${paths.server.root}`).on(
-      'log',
-      onServerLog,
-    );
+    nodemon(
+      `-w ${paths.dist}/${paths.server.root} ${paths.dist}/${paths.server.root}`,
+    ).on('log', onServerLog);
   });
 }

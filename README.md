@@ -1,7 +1,7 @@
-Numwords Example App
+vt-hackaton-backend
 =========================
 
-Example App using React, Redux & Express
+Vector Tiles on-the-flyt generation using Tilesplash
 <br/>
 
 Install

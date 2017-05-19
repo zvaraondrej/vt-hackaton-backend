@@ -2,7 +2,7 @@ import runSequence from 'run-sequence';
 
 export default function serve(gulp) {
   gulp.task('serve', (cb) => {
-    runSequence('lint:scripts', 'env:local', 'start:server', 'watch', cb);
+    runSequence('lint:scripts', 'env:dev', 'start:server', 'watch', cb);
   });
 
   gulp.task('serve:prod', (cb) => {
